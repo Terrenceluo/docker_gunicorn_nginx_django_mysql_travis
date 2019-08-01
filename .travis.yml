@@ -1,2 +1,8 @@
 language: python
-script: true
+
+install:
+  - pip install -r test_travis/requestments.txt -i https://pypi.douban.com/simple --trusted-host pypi.douban.com
+
+script:
+  - python test_travis/manage.py test
+
