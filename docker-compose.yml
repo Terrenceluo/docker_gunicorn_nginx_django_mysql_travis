@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=demo
+      - MYSQL_ROOT_PASSWORD=mysql
+
+  web:
+    build:
+      context: ./test_travis
+      dockerfile: Dockerfile
+    volumes:
+      - ./test_travis/:/code
+    depends_on:
+      - db
+    networks:
+      - nginx_network
+
+  nginx:
+    image: nginx:1.13
+    ports:
+      - "8001:80"
+    volumes:
+      - ./nginx/conf/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - web
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
