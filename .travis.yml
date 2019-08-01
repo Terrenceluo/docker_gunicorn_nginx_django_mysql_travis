@@ -1,8 +1,8 @@
 language: python
 
 install:
-  - pip install -r test_travis/requestments.txt -i https://pypi.douban.com/simple --trusted-host pypi.douban.com
+  - pip install -r ./test_travis/requirements.txt -i https://pypi.douban.com/simple --trusted-host pypi.douban.com
 
 script:
-  - python test_travis/manage.py test
+  - python ./test_travis/manage.py test
 
