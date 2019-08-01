@@ -111,5 +111,8 @@ db/*
 !db/.gitkeep
 
 test_travis/static/*
+!test_travis/static/.gitkeep
 test_travis/media/*
+!test_travis/media/.gitkeep
 nginx/tmp/*
+!nginx/tmp/.gitkeep
