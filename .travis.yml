@@ -3,7 +3,7 @@ language: python
 python: "3.7.4"
 
 install:
-  - pip install -r ./test_travis/requirements.txt -i https://pypi.douban.com/simple --trusted-host pypi.douban.com
+  - pip install tox -i https://pypi.douban.com/simple --trusted-host pypi.douban.com
 
 script:
-  - python ./test_travis/manage.py test
+  - tox
