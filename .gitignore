@@ -109,3 +109,7 @@ venv.bak/
 # Docker
 db/*
 !db/.gitkeep
+
+test_travis/static/*
+test_travis/media/*
+nginx/tmp/*

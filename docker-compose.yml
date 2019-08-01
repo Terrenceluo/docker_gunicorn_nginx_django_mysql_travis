@@ -13,12 +13,11 @@ services:
     build:
       context: ./test_travis
       dockerfile: Dockerfile
+    entrypoint: /code/entrypoint.sh
     volumes:
       - ./test_travis/:/code
     depends_on:
       - db
-    networks:
-      - nginx_network
 
   nginx:
     image: nginx:1.13
@@ -26,11 +25,8 @@ services:
       - "8001:80"
     volumes:
       - ./nginx/conf/nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/tmp:/tmp/
+      - ./test_travis/static:/usr/share/nginx/html/static
+      - ./test_travis/media:/usr/share/nginx/html/media
     depends_on:
       - web
-    networks:
-      - nginx_network
-
-networks:
-  nginx_network:
-    driver: bridge
